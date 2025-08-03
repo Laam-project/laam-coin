@@ -1,1 +1,1 @@
-# laam-coin
+laam-coin
