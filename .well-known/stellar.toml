@@ -7,8 +7,10 @@ ORG_NAME="Laam"
 ORG_URL="https://laam.online"
 ORG_DESCRIPTION="Laam is a native token built on Stellar, designed to be a modern solution for digital currency. It has a fixed max supply of 1,335,577 LAAM — minted only once to preserve scarcity and long-term value."
 ORG_LOGO="https://i.ibb.co/r28SP1bN/20250802-225108.png"
-ORG_TWITTER="laamcoin"
-ORG_GITHUB="laam-project"
+ORG_TELEGRAM="https://t.me/laamcoin"
+ORG_INSTAGRAM="https://www.instagram.com/laamcoin"
+ORG_YOUTUBE="https://youtube.com/@laamcoin"
+ORG_GITHUB="https://github.com/laam-project"
 ORG_OFFICIAL_EMAIL="info@laam.online"
 
 [[CURRENCIES]]
