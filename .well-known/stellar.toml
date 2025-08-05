@@ -3,15 +3,15 @@ NETWORK_PASSPHRASE="Public Global Stellar Network ; September 2015"
 
 [DOCUMENTATION]
 ORG_NAME="Laam"
-ORG_URL="https://laam.online"
+ORG_URL="https://Laam.online"
 ORG_DESCRIPTION="Laam is a native token built on Stellar, designed to be a modern solution for digital currency. It has a fixed max supply of 1,335,577 LAAM — minted only once to preserve scarcity and long-term value."
 ORG_LOGO="https://i.ibb.co/r28SP1bN/20250802-225108.png"
-ORG_OFFICIAL_EMAIL="info@laam.online"
-ORG_GITHUB="https://github.com/laam-project"
-ORG_SOCIAL=["https://t.me/laamcoin", "https://instagram.com/laamcoin", "https://youtube.com/@laamcoin"]
+ORG_OFFICIAL_EMAIL="info@Laam.online"
+ORG_GITHUB="https://github.com/Laam-project"
+ORG_SOCIAL=["https://t.me/Laamcoin", "https://instagram.com/laamcoin", "https://youtube.com/@laamcoin"]
 
 [[CURRENCIES]]
-code="LAAM"
+code="Laam"
 issuer="GAL4ECDAXNBMJYFCWIJ32HKVIRLCNEXY664CAZYI3EINQWPLXTMEPR64"
 display_decimals=2
 is_asset_anchored=false
