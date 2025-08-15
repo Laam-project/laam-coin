@@ -181,10 +181,17 @@
             color: #34495e;
             margin-bottom: 10px;
         }
+        
+        /* WAX KA BEDDEL HALKAN LAGA BILAABO */
+        .token-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap; /* Si ay u kala baxaan haddii shaashadu yaraato */
+        }
 
-        .explorer-button {
+        .action-button {
             display: inline-block;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Golden color */
             color: #333;
             padding: 15px 30px;
             border-radius: 30px;
@@ -192,14 +199,23 @@
             font-weight: 700;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .explorer-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
-            background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+        .action-button.explorer {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Golden color */
         }
+        
+        .action-button.trade {
+            background: linear-gradient(135deg, #29b6f6 0%, #26a69a 100%); /* Teal/Blue color */
+            color: white;
+        }
+
+        .action-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        /* DHAMAADKA WAX KA BEDDELKA */
 
         .widgets-container {
             display: grid;
@@ -361,46 +377,19 @@
                         <li>• Max Supply:1,335,577</li>
                         <li>• Minting Policy: Immutable (no further minting possible)</li>
                     </ul>
-                    <!-- Button Centered Section -->
-<div style="display: flex; justify-content: center; align-items: center; margin-top: 40px; margin-bottom: 40px;">
-  <a href="https://stellarterm.com/exchange/Laam-GAL4ECDAXNBMJYFCWIJ32HKVIRLCNEXY664CAZYI3EINQWPLXTMEPR64/XLM-native"
-     target="_blank"
-     style="
-       display: inline-block;
-       padding: 14px 32px;
-       background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-       color: #fff;
-       font-weight: bold;
-       font-size: 1.1rem;
-       border-radius: 12px;
-       text-decoration: none;
-       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-       transition: all 0.3s ease;
-       text-align: center;
-     "
-     onmouseover="this.style.opacity='0.85'"
-     onmouseout="this.style.opacity='1'">
-    👉 Trade Laam on StellarTerm
-  </a>
-</div>
-                    
+                    <!-- HALKAN AYAA ISBEDDELKU KU JIRAA -->
+                    <div class="token-buttons">
+                        <a href="laam-wallet.html" class="action-button trade">Click laam wallet</a>
+    
+                        <a href="https://stellar.expert/explorer/public/asset/Laam-GAL4ECDAXNBMJYFCWIJ32HKVIRLCNEXY664CAZYI3EINQWPLXTMEPR64" target="_blank" class="action-button explorer">Explorer</a>                    
+                    </div>
+                    <!-- DHAMAADKA ISBEDDELKA -->
+                </div>
 
                 <p>Laam is an open project aimed at supporting real-world use cases such as property sales, vehicle rentals, and community-based commerce. It can be easily added to popular wallets by creating a trustline, including Lobstr, Solar, and Freighter.</p>
 
                 <p>The token is designed to be <span class="highlight">secure</span>, <span class="highlight">non-inflationary</span>, and <span class="highlight">fully tradable</span>.</p>
             </div>
-            <!-- Stellar Expert Widget Centered Properly -->
-<div style="display: flex; justify-content: center; margin-top: 40px;">
-  <div style="max-width: 340px; width: 100%;">
-    <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">Laam Token Summary</div>
-    <iframe 
-      onLoad="var c=this;window.addEventListener('message',function({data,source}){if(c&&source===c.contentWindow&&data.widget===c.src)c.style.height=data.height+'px'},false);"
-      src="https://stellar.expert/widget/public/asset/summary/Laam-GAL4ECDAXNBMJYFCWIJ32HKVIRLCNEXY664CAZYI3EINQWPLXTMEPR64"
-      style="border:none;overflow:hidden;width:100%;min-height:200px;">
-    </iframe>
-  </div>
-</div>
-           
 
             <div class="features">
                 <div class="feature-card">
@@ -428,12 +417,6 @@
                 <div class="livecoinwatch-widget-5" lcw-base="USD" lcw-color-tx="#0693e3" lcw-marquee-1="coins" lcw-marquee-2="none" lcw-marquee-items="30"></div>
             </div>
 
-            <div class="widget-wrapper">
-                <div class="widget-label">Stellar (XLM) Price Chart</div>
-                <div class="livecoinwatch-widget-6" lcw-coin="XLM" lcw-base="USD" lcw-period="d" lcw-color-tx="#ffffff" lcw-color-bg="#505153" lcw-border-w="1"></div>
-            </div>
-        </div>
-
         <div class="social-buttons">
             <a href="https://t.me/laamcoin" target="_blank">Telegram</a>
             <a href="https://www.instagram.com/laamcoin" class="instagram" target="_blank">Instagram</a>
@@ -441,6 +424,5 @@
         </div>
     </div>
 </body>
-</html>
-
-  
+    </html>
+    
