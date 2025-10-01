@@ -2584,55 +2584,62 @@ body::before {
       }
 
       async authenticate() {
-        if (!this.isSupported || !this.isSetup) {
-          throw new Error('Fingerprint authentication not set up');
-        }
+  if (!this.isSupported || !this.isSetup) {
+    throw new Error('Fingerprint authentication not set up');
+  }
 
-        try {
-          // Generate a challenge (in production, this should come from your server)
-          const challenge = new Uint8Array(32);
-          crypto.getRandomValues(challenge);
+  try {
+    const challenge = new Uint8Array(32);
+    crypto.getRandomValues(challenge);
 
-          const publicKeyCredentialRequestOptions = {
-            challenge: challenge,
-            allowCredentials: [{
-              id: this.base64ToArrayBuffer(this.credentialId),
-              type: "public-key"
-            }],
-            userVerification: "required",
-            timeout: 60000
-          };
+    const publicKeyCredentialRequestOptions = {
+      challenge: challenge,
+      allowCredentials: [{
+        id: this.base64ToArrayBuffer(this.credentialId),
+        type: "public-key"
+      }],
+      userVerification: "required",
+      timeout: 60000
+    };
 
-          this.showScanner('Verify your identity', 'Use your fingerprint to unlock', true);
+    this.showScanner('Verify your identity', 'Use your fingerprint to unlock', true);
 
-          const assertion = await navigator.credentials.get({
-            publicKey: publicKeyCredentialRequestOptions,
-            mediation: 'optional'
-          });
+    const assertion = await navigator.credentials.get({
+      publicKey: publicKeyCredentialRequestOptions,
+      mediation: 'optional'
+    });
 
-          this.hideScanner();
+    this.hideScanner();
 
-          // Verify the assertion (in production, verify with your server)
-          const isValid = await this.verifyAssertion(assertion);
-          
-          if (isValid) {
-            showSuccess('Fingerprint verified successfully!');
-            return true;
-          } else {
-            throw new Error('Fingerprint verification failed');
-          }
-
-        } catch (error) {
-          this.hideScanner();
-          console.error('Authentication failed:', error);
-          
-          if (error.name === 'NotAllowedError') {
-            throw new Error('Authentication cancelled by user or timeout');
-          } else {
-            throw new Error('Fingerprint authentication failed: ' + error.message);
-          }
-        }
+    // ✅ TUSAALE: Fududeynta verification (production-ka waxaad u baahan tahay server verification)
+    const isValid = await this.verifyAssertion(assertion);
+    
+    if (isValid) {
+      showSuccess('Fingerprint verified successfully!');
+      
+      // ✅ HALKAN: Diree unlock wallet-ka marka authentication guulaysato
+      try {
+        await unlockWalletWithBiometric();
+        return true;
+      } catch (unlockError) {
+        console.error('Unlock failed after auth:', unlockError);
+        throw new Error('Wallet unlock failed: ' + unlockError.message);
       }
+    } else {
+      throw new Error('Fingerprint verification failed');
+    }
+
+  } catch (error) {
+    this.hideScanner();
+    console.error('Authentication failed:', error);
+    
+    if (error.name === 'NotAllowedError') {
+      throw new Error('Authentication cancelled by user or timeout');
+    } else {
+      throw new Error('Fingerprint authentication failed: ' + error.message);
+    }
+  }
+}
 
       async verifyAssertion(assertion) {
         // In a real implementation, you would send the assertion to your server for verification
@@ -2727,21 +2734,22 @@ body::before {
 
       // Fingerprint unlock button
       document.getElementById('fingerprintUnlockBtn').addEventListener('click', async function() {
-        this.disabled = true;
-        this.textContent = 'Authenticating...';
-        
-        try {
-          const isAuthenticated = await fingerprintAuth.authenticate();
-          if (isAuthenticated) {
-            await unlockWalletWithBiometric();
-          }
-        } catch (error) {
-          showError(error.message);
-        } finally {
-          this.disabled = false;
-          this.textContent = 'Fingerprint Unlock';
-        }
-      });
+  this.disabled = true;
+  this.textContent = 'Authenticating...';
+  
+  try {
+    await fingerprintAuth.authenticate();
+    // HADDA authentication-ku wuxuu isku xiraa unlockWalletWithBiometric()
+    console.log('Fingerprint authentication completed');
+  } catch (error) {
+    console.error('Fingerprint auth error:', error);
+    showError(error.message);
+    
+    // Reset button
+    this.disabled = false;
+    this.textContent = 'Fingerprint Unlock';
+  }
+});
 
       // Cancel scan button
       document.getElementById('cancelScan').addEventListener('click', function() {
